@@ -1,0 +1,50 @@
+{
+    "name": "laravel-test-1",
+    "description": "Laravel test 1",
+    "keywords": ["laravel", "test"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=7.0.0",
+        "fideloper/proxy": "~3.3",
+        "laravel/framework": "5.5.*"
+    },
+    "require-dev": {
+        "filp/whoops": "~2.0",
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload": {
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "@php artisan key:generate"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}
